@@ -74,8 +74,13 @@ namespace ConsoleApp4
             Console.WriteLine($"Введите числа которые хотите записать в массив (числа нужно записать через пробел либо запятую");
             string enter = Console.ReadLine();
             var split= enter.Split(' ', ',');
-            
-            return ;
+            int[] array = new int[split.Length];
+            for(int i=0; i < split.Length; i++) 
+            {
+                bool check = int.TryParse(split[i], out int result);
+                array[i] = result;
+            }
+            return array;
         }
     }
 }

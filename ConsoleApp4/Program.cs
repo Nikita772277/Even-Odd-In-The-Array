@@ -6,27 +6,48 @@ void GetMenu()
     Console.WriteLine();
     Console.WriteLine($"1) Получить все числа которые встречаюстя в массиве не чётное количество раз");
     Console.WriteLine($"2) Получить все числа которые встречаюстя в массиве чётное количество раз");
-    Console.WriteLine($"3) Создать свой массив чисел");
     Console.WriteLine();
 }
 void UseMenu()
 {
+    Console.WriteLine($"Хотите ли вы создать свой массив 1)да. 2)нет.");
+    string choice = Console.ReadLine();
+    bool checkChoice = int.TryParse(choice, out var resultchoice);
+    if (resultchoice == 1)
+    {
+        var userArray = work.CreateUserArray();
+    }
     while (true)
     {
         GetMenu();
         string enter = Console.ReadLine();
-        bool check = int.TryParse(enter, out var result);
+        bool checkenter = int.TryParse(enter, out var resultenter);
         Console.WriteLine();
         int[] ints = new int[] { 1, 1, 2, 3, 4, 5, 6, 7, 8, 4, 3 };
-        if (result == 1)
+        if (resultenter == 1)
         {
+            Console.WriteLine($"1)Использовать свой массив");
+            Console.WriteLine($"2)Использовать заранее созданный в программе массив");
+            string choiceuser = Console.ReadLine();
+            bool check = int.TryParse(choiceuser, out var resultuser);
             work.OddNumber(ints);
-            return;
+            continue;
         }
-        else if (result == 2)
+        else if (resultenter == 2)
         {
-            work.EvenNumber(ints);
-            return;
+            Console.WriteLine($"1)Использовать свой массив");
+            Console.WriteLine($"2)Использовать заранее созданный в программе массив");
+            string choiceuser= Console.ReadLine();
+            bool check=int.TryParse(choiceuser, out var resultuser);
+            if (resultuser == 2)
+            {
+                work.EvenNumber(ints);
+            }
+            continue;
+        }
+        else if (resultenter == 3)
+        {
+            UseMenu();
         }
         else
         {
