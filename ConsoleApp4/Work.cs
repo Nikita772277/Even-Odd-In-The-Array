@@ -71,14 +71,17 @@ namespace ConsoleApp4
         }
         public int[] CreateUserArray()
         {
-            Console.WriteLine($"Введите числа которые хотите записать в массив (числа нужно записать через пробел либо запятую");
+            Console.WriteLine($"Введите числа которые хотите записать в массив (числа нужно записать через пробел либо запятую. Вводимое число не должно быть больше 2147483647 если число больше то оно будет записано в массив как 0)");
             string enter = Console.ReadLine();
-            var split= enter.Split(' ', ',');
+            var split= enter.Split(' ', ',');        
             int[] array = new int[split.Length];
             for(int i=0; i < split.Length; i++) 
             {
-                bool check = int.TryParse(split[i], out int result);
-                array[i] = result;
+                bool checksplit = int.TryParse(split[i], out int resultsplit);
+                if (checksplit)
+                {
+                    array[i] = resultsplit;
+                }
             }
             return array;
         }
